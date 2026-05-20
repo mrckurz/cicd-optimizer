@@ -1,0 +1,74 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cicd-optimizer"
+version = "0.1.0"
+description = "Find wasted minutes and cloud dollars in GitHub Actions and GitLab CI pipelines — with auto-refactor suggestions and a live dashboard."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Marc Kurz" }]
+keywords = ["ci", "cd", "github-actions", "gitlab-ci", "cost", "observability", "finops", "devops"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Build Tools",
+    "Topic :: Software Development :: Quality Assurance",
+]
+dependencies = [
+    "PyYAML>=6.0",
+    "click>=8.1",
+    "rich>=13.7",
+    "requests>=2.31",
+    "jinja2>=3.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=4.1",
+    "ruff>=0.4",
+    "mypy>=1.8",
+    "types-requests",
+    "types-PyYAML",
+]
+
+[project.urls]
+Homepage = "https://github.com/mrckurz/cicd-optimizer"
+Issues = "https://github.com/mrckurz/cicd-optimizer/issues"
+Documentation = "https://github.com/mrckurz/cicd-optimizer#readme"
+
+[project.scripts]
+cicd-optimizer = "cicd_optimizer.cli:main"
+cco = "cicd_optimizer.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+cicd_optimizer = ["templates/*.html", "templates/*.css", "templates/*.js"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "PL"]
+ignore = ["PLR0913", "PLR2004", "PLR0915", "PLR0912", "PLR0911", "PLC0415", "B905", "E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+
+[tool.mypy]
+python_version = "3.10"
+strict = false
+ignore_missing_imports = true

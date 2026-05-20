@@ -1,0 +1,8 @@
+stages: [test]
+
+test:
+  stage: test
+  tags: [saas-linux-large-amd64]
+  script:
+    - pip install -r requirements.txt
+    - pytest

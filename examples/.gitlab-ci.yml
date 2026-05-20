@@ -1,0 +1,17 @@
+stages: [test, build]
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+test:
+  stage: test
+  tags: [saas-linux-large-amd64]
+  script:
+    - pip install -r requirements.txt
+    - pytest
+
+build:
+  stage: build
+  tags: [saas-linux-large-amd64]
+  script:
+    - docker build -t app:latest .
