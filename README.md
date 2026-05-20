@@ -98,19 +98,59 @@ human-readable explanation, and an auto-refactor patch.
 
 ### Pricing model (GitHub-hosted, USD/min)
 
-Baked-in defaults follow GitHub's public pricing. Override at runtime with `--pricing path.json`.
+Baked-in defaults follow GitHub's [public Actions runner pricing reference](https://docs.github.com/en/billing/reference/actions-runner-pricing) (verified 2026-05). Override at runtime with `--pricing path.json`.
+
+**Linux x64**
 
 | Runner | $/min |
-|---|---|
-| `ubuntu-latest` (2-core) | 0.008 |
-| `ubuntu-latest-4-core` | 0.016 |
-| `ubuntu-latest-8-core` | 0.032 |
-| `ubuntu-latest-16-core` | 0.064 |
-| `ubuntu-latest-32-core` | 0.128 |
-| `ubuntu-latest-64-core` | 0.256 |
-| `windows-latest` (2-core) | 0.016 |
-| `macos-latest` (3-core) | 0.08 |
-| `macos-latest-xlarge` (12-core, Apple silicon) | 0.32 |
+|---|---:|
+| `ubuntu-latest` (2-core) | 0.006 |
+| `ubuntu-latest-4-core` | 0.012 |
+| `ubuntu-latest-8-core` | 0.022 |
+| `ubuntu-latest-16-core` | 0.042 |
+| `ubuntu-latest-32-core` | 0.082 |
+| `ubuntu-latest-64-core` | 0.162 |
+| `ubuntu-latest-96-core` | 0.252 |
+
+**Linux arm64** (cheaper than x64)
+
+| Runner | $/min |
+|---|---:|
+| `ubuntu-latest-2-core-arm` | 0.005 |
+| `ubuntu-latest-4-core-arm` | 0.008 |
+| `ubuntu-latest-8-core-arm` | 0.014 |
+| `ubuntu-latest-16-core-arm` | 0.026 |
+| `ubuntu-latest-32-core-arm` | 0.050 |
+| `ubuntu-latest-64-core-arm` | 0.098 |
+
+**Windows x64**
+
+| Runner | $/min |
+|---|---:|
+| `windows-latest` (2-core) | 0.010 |
+| `windows-latest-4-core` | 0.022 |
+| `windows-latest-8-core` | 0.042 |
+| `windows-latest-16-core` | 0.082 |
+| `windows-latest-32-core` | 0.162 |
+| `windows-latest-64-core` | 0.322 |
+| `windows-latest-96-core` | 0.552 |
+
+**macOS**
+
+| Runner | $/min |
+|---|---:|
+| `macos-latest` (3/4-core, M1/Intel) | 0.062 |
+| `macos-latest-large` (12-core) | 0.077 |
+| `macos-latest-xlarge` (5-core M2 Pro) | 0.102 |
+
+**GPU runners**
+
+| Runner | $/min |
+|---|---:|
+| `ubuntu-latest-4-core-gpu` | 0.052 |
+| `windows-latest-4-core-gpu` | 0.102 |
+
+> ⚠️ GitHub revised pricing in 2024–2025. The old folk wisdom of "2× Linux for Windows, 10× for macOS" is no longer accurate — macOS in particular dropped significantly. Always reference the live page if you need treasury-grade numbers.
 
 ## Dashboard
 

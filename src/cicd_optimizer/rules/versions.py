@@ -7,16 +7,16 @@ import re
 from ..models import Finding, Patch, Severity, Workflow
 from .base import RuleContext
 
-# action -> (minimum acceptable major version, current major)
+# action -> (minimum acceptable major version, current major) — verified 2026-05
 RECOMMENDED: dict[str, tuple[int, int]] = {
-    "actions/checkout": (4, 4),
+    "actions/checkout": (5, 6),
     "actions/setup-node": (4, 4),
-    "actions/setup-python": (5, 5),
+    "actions/setup-python": (5, 6),
     "actions/setup-go": (5, 5),
     "actions/setup-java": (4, 4),
     "actions/cache": (4, 4),
-    "actions/upload-artifact": (4, 4),
-    "actions/download-artifact": (4, 4),
+    "actions/upload-artifact": (5, 7),
+    "actions/download-artifact": (4, 5),
     "docker/build-push-action": (5, 6),
     "docker/login-action": (3, 3),
     "docker/setup-buildx-action": (3, 3),
